@@ -27,8 +27,9 @@ Microsoft Word / Google Docs	Execution plan and stakeholder summary documentatio
 
 ## 4. Analytical Pipeline
 
-**Step 1: Cohort Definition.**
-**Tool: PostgreSQL / Beekeeper.**
+**Step 1:** Cohort Definition
+
+**Tool:** PostgreSQL / Beekeeper.
 
 Filtered the sessions table to users with more than 7 sessions after January 4th 2023. This produced a cohort of 5,998 high-engagement users from 49,211 total sessions. LEFT JOINs were used to include sessions where no booking occurred, enabling non-booker analysis. 
 
@@ -50,19 +51,20 @@ Filtered the sessions table to users with more than 7 sessions after January 4th
 **Step 3:** Exploratory Analysis
 **Tool:** Tableau Desktop
 
-## Six charts built on the session-level table (49,211 rows):
+** Six charts built on the session-level table (49,211 rows):
 
-Chart	Type	Key Finding
-1 - Checked Bags	Histogram	Near 50/50 split between zero-bag and one-bag travelers
-2 - Hotel Loyalists	Scatter Plot	Distinct cluster of high-price, long-stay customers
-3 - Deal Hunters	Bar Chart	Habitual discount users form a distinct behavioral segment
-4 - Family Travelers	Diverging Bar	Married with children above average on all three metrics simultaneously
-5 - Customer Value Map	Bubble Chart	Families cluster at higher spend — confirmed across two analyses
-6 - Synthesis	Scatter Plot	Four customer value tiers visible combining spend, stay and engagement
+| Chart|	Type	| Key Finding |
+|------| ------ | ----------- |
+| 1 - Checked Bags |	Histogram	| Near 50/50 split between zero-bag and one-bag travelers |
+| 2 - Hotel Loyalists |	Scatter Plot |	Distinct cluster of high-price, long-stay customers |
+| 3 - Deal Hunters |	Bar Chart |	Habitual discount users form a distinct behavioral segment |
+| 4 - Family Travelers |	Diverging Bar |	Married with children above average on all three metrics simultaneously |
+| 5 - Customer Value Map |	Bubble Chart |	Families cluster at higher spend — confirmed across two analyses |
+| 6 - Synthesis	| Scatter Plot |	Four customer value tiers visible combining spend, stay and engagement |
 
 
-** Step 4: Feature Engineering
-** Tool: PostgreSQL / Beekeeper
+**Step 4:** Feature Engineering
+**Tool:** PostgreSQL / Beekeeper
 
 Seven behavioral metrics calculated per user using CTEs to avoid row multiplication from multi-table JOINs:
 
@@ -78,23 +80,24 @@ family_segment	Segment	Combination of married and has_children boolean fields
 ## Note: Pre-aggregation pattern: each table (sessions, flights, hotels) was aggregated to user level in a separate CTE before joining. This prevents row multiplication — a common SQL error when joining one-to-many tables.
 
 
-## Step 5: Perk Assignment
-## Tool: PostgreSQL / Beekeeper
+**Step 5:** Perk Assignment
+**Tool:** PostgreSQL / Beekeeper
 
 A final CASE statement in the SELECT used segment labels from the user_segments CTE to assign one perk per user. Priority order was determined by revenue impact and analytical evidence from the Tableau charts.
 
 
-Priority	Condition	Assigned Perk	Users
-1	family_segment = Married With Children	Free Seat Bundle	1,084
-2	distance_category = International	Free Checked Bag	266
-3	discount_sensitivity = Habitual Deal Hunter	Exclusive Discount	2,221
-4	discount_sensitivity = Non-Booker	1 Night Free Hotel With Flight	792
-5	customer_lifetime_value > $3,201 (avg)	No Cancellation Fees	573
-6	All remaining users	Free Hotel Meal	1,062
+| Priority |	Condition |	Assigned Perk |	Users |
+| -------- | -----------| ------------- | ----- |
+| 1|  family_segment = Married With Children |	Free Seat Bundle |	1,084 |
+| 2	| distance_category = International |	Free Checked Bag |	266 |
+| 3	| discount_sensitivity = Habitual Deal Hunter |	Exclusive Discount	2,221 |
+| 4	| discount_sensitivity = Non-Booker	| 1 Night Free Hotel With Flight	792 |
+| 5	| customer_lifetime_value > $3,201 (avg) |	No Cancellation Fees |	573 |
+| 6	| All remaining users |	Free Hotel Meal |	1,062 |
 
 
-## Step 6: Campaign Visualizations
-## Tool: Tableau Desktop
+**Step 6:** Campaign Visualizations
+**Tool:** Tableau Desktop
 
 
 Two final visualizations built on the metrics table (5,998 rows — one row per user):
