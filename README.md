@@ -32,11 +32,11 @@ Microsoft Word / Google Docs	Execution plan and stakeholder summary documentatio
 
 Filtered the sessions table to users with more than 7 sessions after January 4th 2023. This produced a cohort of 5,998 high-engagement users from 49,211 total sessions. LEFT JOINs were used to include sessions where no booking occurred, enabling non-booker analysis. 
 
-Note: LEFT JOIN vs INNER JOIN. INNER JOIN would have excluded non-booking sessions and made the Non-Booker segment invisible. LEFT JOIN preserves the full customer journey.
+**Note:** LEFT JOIN vs INNER JOIN. INNER JOIN would have excluded non-booking sessions and made the Non-Booker segment invisible. LEFT JOIN preserves the full customer journey.
 
 
-## Step 2: Data Cleaning
-## Tool: Tableau Desktop
+**Step 2:** Data Cleaning
+**Tool:** Tableau Desktop
 
 •	Fixed date and time field types (session_start, departure_time, check_in, check_out, birthdate)
 •	Assigned geographic roles to lat/lon coordinate fields
@@ -44,11 +44,11 @@ Note: LEFT JOIN vs INNER JOIN. INNER JOIN would have excluded non-booking sessio
 •	Created Booking Status field to classify sessions by outcome (Full Booking, Flight Only, Hotel Only, No Booking)
 •	Identified and filtered 50 null values in synthesis chart (<1% of full booking sessions)
 
-## Note: Fixed data types in the Tableau Data Source tab before building any charts. CSV files have no enforced types, and Tableau auto-detects and sometimes gets it wrong (it did).
+**Note:** Fixed data types in the Tableau Data Source tab before building any charts. CSV files have no enforced types, and Tableau auto-detects and sometimes gets it wrong (it did).
 
 
-## Step 3: Exploratory Analysis
-## Tool: Tableau Desktop
+**Step 3:** Exploratory Analysis
+**Tool:** Tableau Desktop
 
 ## Six charts built on the session-level table (49,211 rows):
 
