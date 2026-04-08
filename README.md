@@ -156,6 +156,5 @@ Two final visualizations built on the metrics table (5,998 rows — one row per 
 
 
 
-# Ubiratan Gonzaga e Silva
-## DASep2025##
+** Ubiratan Gonzaga e Silva | DASep2025##
 
