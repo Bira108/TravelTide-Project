@@ -28,7 +28,6 @@ Microsoft Word / Google Docs	Execution plan and stakeholder summary documentatio
 ## 4. Analytical Pipeline
 
 **Step 1:** Cohort Definition.
-
 **Tool:** PostgreSQL / Beekeeper.
 
 Filtered the sessions table to users with more than 7 sessions after January 4th 2023. This produced a cohort of 5,998 high-engagement users from 49,211 total sessions. LEFT JOINs were used to include sessions where no booking occurred, enabling non-booker analysis. 
@@ -36,8 +35,8 @@ Filtered the sessions table to users with more than 7 sessions after January 4th
 **Note: LEFT JOIN vs INNER JOIN.** INNER JOIN would have excluded non-booking sessions and made the Non-Booker segment invisible. LEFT JOIN preserves the full customer journey.
 
 
-**Step 2:** Data Cleaning
-**Tool:** Tableau Desktop
+**Step 2:** Data Cleaning.
+**Tool:** Tableau Desktop.
 
 *	Fixed date and time field types (session_start, departure_time, check_in, check_out, birthdate)
 *	Assigned geographic roles to lat/lon coordinate fields
@@ -143,9 +142,3 @@ Projected reduction in discount spend	~40%
 Ubiratan Gonzaga e Silva
 DASep2025
 
-
-
-## Subtitle 1
-Here we talk about the project
-
-## Subtitle 2
