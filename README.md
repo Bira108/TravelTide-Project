@@ -103,11 +103,11 @@ A final CASE statement in the SELECT used segment labels from the user_segments 
 
 Two final visualizations built on the metrics table (5,998 rows — one row per user):
 
-•	Viz 1: Perk Distribution Bar Chart — campaign scale per perk, sorted descending
-•	Viz 2: Perk by Family Segment Heatmap — confirms perk exclusivity, blank cells = no overlap
+* Viz 1: Perk Distribution Bar Chart — campaign scale per perk, sorted descending
+* Viz 2: Perk by Family Segment Heatmap — confirms perk exclusivity, blank cells = no overlap
 
 
-# 5. Key Analytical Decisions
+## 5. Key Analytical Decisions
 
 
 Decision	Reason
@@ -119,15 +119,15 @@ Pre-aggregation CTE pattern	Prevents row multiplication when joining sessions, f
 Priority order in perk assignment	First matching condition wins — families protected before discount hunters, maximizing revenue impact
 
 
-# 6. Limitations and Assumptions
+## 6. Limitations and Assumptions
 
-•	Customer Acquisition Cost (CAC) could not be calculated — marketing spend data not available in dataset.
-•	Distance threshold of 4,000km may classify some long US domestic routes as International.
-•	Financial projections (CLV $3,201 average) are conservative estimates based on available booking data.
-•	Phased rollout timing and A/B testing design are outside the scope of this analysis
+* Customer Acquisition Cost (CAC) could not be calculated — marketing spend data not available in dataset.
+* Distance threshold of 4,000km may classify some long US domestic routes as International.
+* Financial projections (CLV $3,201 average) are conservative estimates based on available booking data.
+* Phased rollout timing and A/B testing design are outside the scope of this analysis
 
 
-# 7. Results Summary:
+## 7. Results Summary:
 
 Output	Value
 Total users in cohort	5,998
