@@ -20,15 +20,16 @@ Four tables from TravelTide's PostgreSQL database:
 
 ## 3. Tools
 
-PostgreSQL (Beekeeper Studio)	Data extraction, cohort definition, feature engineering, perk assignment
-Tableau Desktop	Exploratory analysis, behavioral segmentation visualization, campaign output charts
-Microsoft Word / Google Docs	Execution plan and stakeholder summary documentation
+| Tool | Purpose |
+| PostgreSQL (Beekeeper Studio) |	Data extraction, cohort definition, feature engineering, perk assignment |
+| Tableau Desktop |	Exploratory analysis, behavioral segmentation visualization, campaign output charts |
+| Microsoft Word / Google Docs |	Execution plan and stakeholder summary documentation |
 
 
 ## 4. Analytical Pipeline
 
-**Step 1:** Cohort Definition.
-**Tool:** PostgreSQL / Beekeeper.
+**Step 1: Cohort Definition.
+Tool: PostgreSQL / Beekeeper.**
 
 Filtered the sessions table to users with more than 7 sessions after January 4th 2023. This produced a cohort of 5,998 high-engagement users from 49,211 total sessions. LEFT JOINs were used to include sessions where no booking occurred, enabling non-booker analysis. 
 
