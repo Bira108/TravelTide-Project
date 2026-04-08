@@ -27,7 +27,7 @@ Microsoft Word / Google Docs	Execution plan and stakeholder summary documentatio
 
 ## 4. Analytical Pipeline
 
-**Step 1:** Cohort Definition
+**Step 1:** Cohort Definition.
 
 **Tool:** PostgreSQL / Beekeeper.
 
@@ -68,16 +68,16 @@ Filtered the sessions table to users with more than 7 sessions after January 4th
 
 Seven behavioral metrics calculated per user using CTEs to avoid row multiplication from multi-table JOINs:
 
-Metric	Type	Formula Basis
-avg_lead_time_days	Numeric	EXTRACT(EPOCH) difference between session_start and departure_time / 86400
-booking_completion_rate	Numeric	Full booking sessions / total sessions per user
-customer_lifetime_value	Numeric	SUM of base_fare_usd + (hotel_price x rooms x nights) per user
-trip_length_category	Segment	AVG(nights) bucketed: Weekender <=2, Standard <=5, Extended >5
-distance_category	Segment	Haversine formula on lat/lon coordinates: Local <500km, Domestic <4000km, International 4000km+
-discount_sensitivity	Segment	Discount sessions / full booking sessions: Non-Booker, Never, Occasional, Habitual
-family_segment	Segment	Combination of married and has_children boolean fields
+| Metric	Type	Formula Basis
+| avg_lead_time_days |	Numeric |	EXTRACT(EPOCH) difference between session_start and departure_time / 86400 |
+| booking_completion_rate |	Numeric |	Full booking sessions / total sessions per user |
+| customer_lifetime_value |	Numeric |	SUM of base_fare_usd + (hotel_price x rooms x nights) per user |
+| trip_length_category |	Segment |	AVG(nights) bucketed: Weekender <=2, Standard <=5, Extended >5 |
+| distance_category |	Segment |	Haversine formula on lat/lon coordinates: Local <500km, Domestic <4000km, International 4000km+ |
+| discount_sensitivity |	Segment |	Discount sessions / full booking sessions: Non-Booker, Never, Occasional, Habitual |
+| family_segment |	Segment |	Combination of married and has_children boolean fields |
 
-## Note: Pre-aggregation pattern: each table (sessions, flights, hotels) was aggregated to user level in a separate CTE before joining. This prevents row multiplication — a common SQL error when joining one-to-many tables.
+**Note:** Pre-aggregation pattern: each table (sessions, flights, hotels) was aggregated to user level in a separate CTE before joining. This prevents row multiplication — a common SQL error when joining one-to-many tables.
 
 
 **Step 5:** Perk Assignment
