@@ -144,6 +144,7 @@ Two final visualizations built on the metrics table (5,998 rows — one row per 
 ## 7. Results Summary:
 
 | Output |	Value |
+| ------ | ------ |
 | Total users in cohort	| 5,998 |
 | Total sessions analyzed	| 49,211 |
 | Behavioral metrics engineered |	7 |
@@ -155,6 +156,6 @@ Two final visualizations built on the metrics table (5,998 rows — one row per 
 
 
 
-## Ubiratan Gonzaga e Silva##
+# Ubiratan Gonzaga e Silva
 ## DASep2025##
 
