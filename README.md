@@ -21,6 +21,7 @@ Four tables from TravelTide's PostgreSQL database:
 ## 3. Tools
 
 | Tool | Purpose |
+| ---- | ------- |
 | PostgreSQL (Beekeeper Studio) |	Data extraction, cohort definition, feature engineering, perk assignment |
 | Tableau Desktop |	Exploratory analysis, behavioral segmentation visualization, campaign output charts |
 | Microsoft Word / Google Docs |	Execution plan and stakeholder summary documentation |
