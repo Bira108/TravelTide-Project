@@ -68,7 +68,8 @@ Filtered the sessions table to users with more than 7 sessions after January 4th
 
 Seven behavioral metrics calculated per user using CTEs to avoid row multiplication from multi-table JOINs:
 
-| Metric	Type	Formula Basis
+| Metric |	Type |	Formula Basis |
+| ------ | ----- | -------------- |
 | avg_lead_time_days |	Numeric |	EXTRACT(EPOCH) difference between session_start and departure_time / 86400 |
 | booking_completion_rate |	Numeric |	Full booking sessions / total sessions per user |
 | customer_lifetime_value |	Numeric |	SUM of base_fare_usd + (hotel_price x rooms x nights) per user |
