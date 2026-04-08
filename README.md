@@ -1,14 +1,14 @@
 # TravelTide Rewards Program 
 
-##Technical Execution Plan
+## Technical Execution Plan
 
 
-#1. Project Objective
+# 1. Project Objective
 
 Design and deliver a data-driven personalized rewards program for TravelTide. The objective was to segment high-engagement users by behavioral profile and assign each user one targeted perk most likely to bring them back to the platform.
 
 
-#2. Data Sources
+# 2. Data Sources
 
 Four tables from TravelTide's PostgreSQL database:
 
@@ -20,25 +20,25 @@ Flights	Trip flight details	trip_id, origin, destination, seats, departure_time,
 Hotels	Trip hotel details	trip_id, hotel_name, nights, rooms, check_in, hotel_price_per_room_night
 
 
-#3. Tools
+# 3. Tools
 
 PostgreSQL (Beekeeper Studio)	Data extraction, cohort definition, feature engineering, perk assignment
 Tableau Desktop	Exploratory analysis, behavioral segmentation visualization, campaign output charts
 Microsoft Word / Google Docs	Execution plan and stakeholder summary documentation
 
 
-#4. Analytical Pipeline
+# 4. Analytical Pipeline
 
 ##Step 1: Cohort Definition
 ##Tool: PostgreSQL / Beekeeper
 
 Filtered the sessions table to users with more than 7 sessions after January 4th 2023. This produced a cohort of 5,998 high-engagement users from 49,211 total sessions. LEFT JOINs were used to include sessions where no booking occurred, enabling non-booker analysis. 
 
-##Note: LEFT JOIN vs INNER JOIN. INNER JOIN would have excluded non-booking sessions and made the Non-Booker segment invisible. LEFT JOIN preserves the full customer journey.
+## Note: LEFT JOIN vs INNER JOIN. INNER JOIN would have excluded non-booking sessions and made the Non-Booker segment invisible. LEFT JOIN preserves the full customer journey.
 
 
-##Step 2: Data Cleaning
-##Tool: Tableau Desktop
+## Step 2: Data Cleaning
+## Tool: Tableau Desktop
 
 •	Fixed date and time field types (session_start, departure_time, check_in, check_out, birthdate)
 •	Assigned geographic roles to lat/lon coordinate fields
@@ -46,13 +46,13 @@ Filtered the sessions table to users with more than 7 sessions after January 4th
 •	Created Booking Status field to classify sessions by outcome (Full Booking, Flight Only, Hotel Only, No Booking)
 •	Identified and filtered 50 null values in synthesis chart (<1% of full booking sessions)
 
-##Note: Fixed data types in the Tableau Data Source tab before building any charts. CSV files have no enforced types, and Tableau auto-detects and sometimes gets it wrong (it did).
+## Note: Fixed data types in the Tableau Data Source tab before building any charts. CSV files have no enforced types, and Tableau auto-detects and sometimes gets it wrong (it did).
 
 
-##Step 3: Exploratory Analysis
-##Tool: Tableau Desktop
+## Step 3: Exploratory Analysis
+## Tool: Tableau Desktop
 
-##Six charts built on the session-level table (49,211 rows):
+## Six charts built on the session-level table (49,211 rows):
 
 Chart	Type	Key Finding
 1 - Checked Bags	Histogram	Near 50/50 split between zero-bag and one-bag travelers
@@ -63,8 +63,8 @@ Chart	Type	Key Finding
 6 - Synthesis	Scatter Plot	Four customer value tiers visible combining spend, stay and engagement
 
 
-##Step 4: Feature Engineering
-##Tool: PostgreSQL / Beekeeper
+## Step 4: Feature Engineering
+## Tool: PostgreSQL / Beekeeper
 
 Seven behavioral metrics calculated per user using CTEs to avoid row multiplication from multi-table JOINs:
 
@@ -77,11 +77,11 @@ distance_category	Segment	Haversine formula on lat/lon coordinates: Local <500km
 discount_sensitivity	Segment	Discount sessions / full booking sessions: Non-Booker, Never, Occasional, Habitual
 family_segment	Segment	Combination of married and has_children boolean fields
 
-##Note: Pre-aggregation pattern: each table (sessions, flights, hotels) was aggregated to user level in a separate CTE before joining. This prevents row multiplication — a common SQL error when joining one-to-many tables.
+## Note: Pre-aggregation pattern: each table (sessions, flights, hotels) was aggregated to user level in a separate CTE before joining. This prevents row multiplication — a common SQL error when joining one-to-many tables.
 
 
-##Step 5: Perk Assignment
-##Tool: PostgreSQL / Beekeeper
+## Step 5: Perk Assignment
+## Tool: PostgreSQL / Beekeeper
 
 A final CASE statement in the SELECT used segment labels from the user_segments CTE to assign one perk per user. Priority order was determined by revenue impact and analytical evidence from the Tableau charts.
 
@@ -95,8 +95,8 @@ Priority	Condition	Assigned Perk	Users
 6	All remaining users	Free Hotel Meal	1,062
 
 
-##Step 6: Campaign Visualizations
-##Tool: Tableau Desktop
+## Step 6: Campaign Visualizations
+## Tool: Tableau Desktop
 
 
 Two final visualizations built on the metrics table (5,998 rows — one row per user):
@@ -105,7 +105,7 @@ Two final visualizations built on the metrics table (5,998 rows — one row per 
 •	Viz 2: Perk by Family Segment Heatmap — confirms perk exclusivity, blank cells = no overlap
 
 
-#5. Key Analytical Decisions
+# 5. Key Analytical Decisions
 
 
 Decision	Reason
@@ -117,7 +117,7 @@ Pre-aggregation CTE pattern	Prevents row multiplication when joining sessions, f
 Priority order in perk assignment	First matching condition wins — families protected before discount hunters, maximizing revenue impact
 
 
-#6. Limitations and Assumptions
+# 6. Limitations and Assumptions
 
 •	Customer Acquisition Cost (CAC) could not be calculated — marketing spend data not available in dataset.
 •	Distance threshold of 4,000km may classify some long US domestic routes as International.
@@ -125,7 +125,7 @@ Priority order in perk assignment	First matching condition wins — families pro
 •	Phased rollout timing and A/B testing design are outside the scope of this analysis
 
 
-#7. Results Summary:
+# 7. Results Summary:
 
 Output	Value
 Total users in cohort	5,998
