@@ -29,8 +29,9 @@ Four tables from TravelTide's PostgreSQL database:
 
 ## 4. Analytical Pipeline
 
-**Step 1: Cohort Definition.
-Tool: PostgreSQL / Beekeeper.**
+
+**Step 1: Cohort Definition
+Tool: PostgreSQL / Beekeeper**
 
 Filtered the sessions table to users with more than 7 sessions after January 4th 2023. This produced a cohort of 5,998 high-engagement users from 49,211 total sessions. LEFT JOINs were used to include sessions where no booking occurred, enabling non-booker analysis. 
 
@@ -38,8 +39,8 @@ Filtered the sessions table to users with more than 7 sessions after January 4th
 
 
 
-**Step 2:** Data Cleaning.
-**Tool:** Tableau Desktop.
+**Step 2: Data Cleaning
+Tool: Tableau Desktop**
 
 *	Fixed date and time field types (session_start, departure_time, check_in, check_out, birthdate)
 *	Assigned geographic roles to lat/lon coordinate fields
@@ -51,10 +52,10 @@ Filtered the sessions table to users with more than 7 sessions after January 4th
 
 
 
-**Step 3:** Exploratory Analysis
-**Tool:** Tableau Desktop
+**Step 3: Exploratory Analysis
+Tool: Tableau Desktop**
 
-** Six charts built on the session-level table (49,211 rows):
+Six charts built on the session-level table (49,211 rows):
 
 
 | Chart|	Type	| Key Finding |
@@ -68,8 +69,8 @@ Filtered the sessions table to users with more than 7 sessions after January 4th
 
 
 
-**Step 4:** Feature Engineering
-**Tool:** PostgreSQL / Beekeeper
+**Step 4: Feature Engineering
+Tool: PostgreSQL / Beekeeper**
 
 Seven behavioral metrics calculated per user using CTEs to avoid row multiplication from multi-table JOINs:
 
@@ -89,8 +90,8 @@ Seven behavioral metrics calculated per user using CTEs to avoid row multiplicat
 
 
 
-**Step 5:** Perk Assignment
-**Tool:** PostgreSQL / Beekeeper
+**Step 5: Perk Assignment
+Tool: PostgreSQL / Beekeeper**
 
 A final CASE statement in the SELECT used segment labels from the user_segments CTE to assign one perk per user. Priority order was determined by revenue impact and analytical evidence from the Tableau charts.
 
@@ -107,8 +108,8 @@ A final CASE statement in the SELECT used segment labels from the user_segments 
 
 
 
-**Step 6:** Campaign Visualizations
-**Tool:** Tableau Desktop
+**Step 6: Campaign Visualizations
+Tool: Tableau Desktop**
 
 
 Two final visualizations built on the metrics table (5,998 rows — one row per user):
@@ -142,14 +143,14 @@ Two final visualizations built on the metrics table (5,998 rows — one row per 
 
 ## 7. Results Summary:
 
-Output	Value
-Total users in cohort	5,998
-Total sessions analyzed	49,211
-Behavioral metrics engineered	7
-Customer segments identified	6
-Perks assigned	6 (one per user)
-Projected incremental revenue (20% non-booker conversion)	$509,000
-Projected reduction in discount spend	~40%
+| Output |	Value |
+| Total users in cohort	| 5,998 |
+| Total sessions analyzed	| 49,211 |
+| Behavioral metrics engineered |	7 |
+| Customer segments identified |	6 |
+| Perks assigned |	6 (one per user) |
+| Projected incremental revenue | (20% non-booker conversion)	$509,000 |
+| Projected reduction in discount spend |	~40% |
 
 
 
