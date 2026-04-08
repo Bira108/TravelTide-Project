@@ -27,8 +27,8 @@ Microsoft Word / Google Docs	Execution plan and stakeholder summary documentatio
 
 ## 4. Analytical Pipeline
 
-**Step 1: Cohort Definition**
-**Tool: PostgreSQL / Beekeeper**
+**Step 1: Cohort Definition.**
+**Tool: PostgreSQL / Beekeeper.**
 
 Filtered the sessions table to users with more than 7 sessions after January 4th 2023. This produced a cohort of 5,998 high-engagement users from 49,211 total sessions. LEFT JOINs were used to include sessions where no booking occurred, enabling non-booker analysis. 
 
