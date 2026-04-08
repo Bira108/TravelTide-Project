@@ -1,14 +1,11 @@
 # TravelTide Rewards Program 
 
-## Technical Execution Plan
-
-
-# 1. Project Objective
+## 1. Project Objective
 
 Design and deliver a data-driven personalized rewards program for TravelTide. The objective was to segment high-engagement users by behavioral profile and assign each user one targeted perk most likely to bring them back to the platform.
 
 
-# 2. Data Sources
+## 2. Data Sources
 
 Four tables from TravelTide's PostgreSQL database:
 
@@ -20,14 +17,14 @@ Flights	Trip flight details	trip_id, origin, destination, seats, departure_time,
 Hotels	Trip hotel details	trip_id, hotel_name, nights, rooms, check_in, hotel_price_per_room_night
 
 
-# 3. Tools
+## 3. Tools
 
 PostgreSQL (Beekeeper Studio)	Data extraction, cohort definition, feature engineering, perk assignment
 Tableau Desktop	Exploratory analysis, behavioral segmentation visualization, campaign output charts
 Microsoft Word / Google Docs	Execution plan and stakeholder summary documentation
 
 
-# 4. Analytical Pipeline
+## 4. Analytical Pipeline
 
 ##Step 1: Cohort Definition
 ##Tool: PostgreSQL / Beekeeper
