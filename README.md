@@ -10,11 +10,12 @@ Design and deliver a data-driven personalized rewards program for TravelTide. Th
 Four tables from TravelTide's PostgreSQL database:
 
 
-Table	Description	Key Fields
-Sessions	One row per browsing session	session_id, user_id, session_start, flight_booked, hotel_booked, discounts, page_clicks
-Users	Customer demographic profile	user_id, gender, married, has_children, home_airport, home coordinates, sign_up_date
-Flights	Trip flight details	trip_id, origin, destination, seats, departure_time, base_fare_usd, coordinates
-Hotels	Trip hotel details	trip_id, hotel_name, nights, rooms, check_in, hotel_price_per_room_night
+| Table |	Description |	Key Fields |
+|------ | ----------- | ---------- |
+| Sessions |	One row per browsing session |	session_id, user_id, session_start, flight_booked, hotel_booked, discounts, page_clicks |
+| Users |	Customer demographic profile |	user_id, gender, married, has_children, home_airport, home coordinates, sign_up_date |
+| Flights |	Trip flight details	| trip_id, origin, destination, seats, departure_time, base_fare_usd, coordinates |
+| Hotels |	Trip hotel details	| trip_id, hotel_name, nights, rooms, check_in, hotel_price_per_room_night |
 
 
 ## 3. Tools
