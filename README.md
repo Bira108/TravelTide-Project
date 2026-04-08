@@ -35,6 +35,7 @@ Filtered the sessions table to users with more than 7 sessions after January 4th
 **Note: LEFT JOIN vs INNER JOIN.** INNER JOIN would have excluded non-booking sessions and made the Non-Booker segment invisible. LEFT JOIN preserves the full customer journey.
 
 
+
 **Step 2:** Data Cleaning.
 **Tool:** Tableau Desktop.
 
@@ -47,10 +48,12 @@ Filtered the sessions table to users with more than 7 sessions after January 4th
 **Note:** Fixed data types in the Tableau Data Source tab before building any charts. CSV files have no enforced types, and Tableau auto-detects and sometimes gets it wrong (it did).
 
 
+
 **Step 3:** Exploratory Analysis
 **Tool:** Tableau Desktop
 
 ** Six charts built on the session-level table (49,211 rows):
+
 
 | Chart|	Type	| Key Finding |
 |------| ------ | ----------- |
@@ -62,10 +65,12 @@ Filtered the sessions table to users with more than 7 sessions after January 4th
 | 6 - Synthesis	| Scatter Plot |	Four customer value tiers visible combining spend, stay and engagement |
 
 
+
 **Step 4:** Feature Engineering
 **Tool:** PostgreSQL / Beekeeper
 
 Seven behavioral metrics calculated per user using CTEs to avoid row multiplication from multi-table JOINs:
+
 
 | Metric |	Type |	Formula Basis |
 | ------ | ----- | -------------- |
@@ -77,13 +82,16 @@ Seven behavioral metrics calculated per user using CTEs to avoid row multiplicat
 | discount_sensitivity |	Segment |	Discount sessions / full booking sessions: Non-Booker, Never, Occasional, Habitual |
 | family_segment |	Segment |	Combination of married and has_children boolean fields |
 
+
 **Note:** Pre-aggregation pattern: each table (sessions, flights, hotels) was aggregated to user level in a separate CTE before joining. This prevents row multiplication — a common SQL error when joining one-to-many tables.
+
 
 
 **Step 5:** Perk Assignment
 **Tool:** PostgreSQL / Beekeeper
 
 A final CASE statement in the SELECT used segment labels from the user_segments CTE to assign one perk per user. Priority order was determined by revenue impact and analytical evidence from the Tableau charts.
+
 
 
 | Priority |	Condition |	Assigned Perk |	Users |
@@ -96,6 +104,7 @@ A final CASE statement in the SELECT used segment labels from the user_segments 
 | 6	| All remaining users |	Free Hotel Meal |	1,062 |
 
 
+
 **Step 6:** Campaign Visualizations
 **Tool:** Tableau Desktop
 
@@ -106,16 +115,19 @@ Two final visualizations built on the metrics table (5,998 rows — one row per 
 * Viz 2: Perk by Family Segment Heatmap — confirms perk exclusivity, blank cells = no overlap
 
 
+
 ## 5. Key Analytical Decisions
 
 
-Decision	Reason
-LEFT JOIN instead of INNER JOIN	Preserve non-booking sessions to enable Non-Booker segment analysis
-Cohort: >7 sessions post Jan 2023	Focus perk investment on users with demonstrated platform engagement
-Two data sources in Tableau	Session table for behavioral analysis (49,211 rows), metrics table for perk output (5,998 rows)
-Haversine formula for distance	Standard great circle calculation — accurate for geographic coordinate pairs
-Pre-aggregation CTE pattern	Prevents row multiplication when joining sessions, flights and hotels simultaneously
-Priority order in perk assignment	First matching condition wins — families protected before discount hunters, maximizing revenue impact
+| Decision |	Reason |
+| -------- | ------- |
+| LEFT JOIN instead of INNER JOIN |	Preserve non-booking sessions to enable Non-Booker segment analysis |
+| Cohort: >7 sessions post Jan 2023 |	Focus perk investment on users with demonstrated platform engagement |
+| Two data sources in Tableau |	Session table for behavioral analysis (49,211 rows), metrics table for perk output (5,998 rows) |
+| Haversine formula for distance |	Standard great circle calculation — accurate for geographic coordinate pairs |
+| Pre-aggregation CTE pattern | Prevents row multiplication when joining sessions, flights and hotels simultaneously |
+| Priority order in perk assignment |	First matching condition wins — families protected before discount hunters, maximizing revenue impact |
+
 
 
 ## 6. Limitations and Assumptions
@@ -139,6 +151,7 @@ Projected reduction in discount spend	~40%
 
 
 
-Ubiratan Gonzaga e Silva
-DASep2025
+
+## Ubiratan Gonzaga e Silva##
+## DASep2025##
 
