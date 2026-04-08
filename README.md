@@ -38,11 +38,11 @@ Filtered the sessions table to users with more than 7 sessions after January 4th
 **Step 2:** Data Cleaning
 **Tool:** Tableau Desktop
 
-*•	Fixed date and time field types (session_start, departure_time, check_in, check_out, birthdate)
-*•	Assigned geographic roles to lat/lon coordinate fields
-*•	Created nights_clean calculated field to exclude zero and negative night values
-*•	Created Booking Status field to classify sessions by outcome (Full Booking, Flight Only, Hotel Only, No Booking)
-*•	Identified and filtered 50 null values in synthesis chart (<1% of full booking sessions)
+*	Fixed date and time field types (session_start, departure_time, check_in, check_out, birthdate)
+*	Assigned geographic roles to lat/lon coordinate fields
+*	Created nights_clean calculated field to exclude zero and negative night values
+*	Created Booking Status field to classify sessions by outcome (Full Booking, Flight Only, Hotel Only, No Booking)
+*	Identified and filtered 50 null values in synthesis chart (<1% of full booking sessions)
 
 **Note:** Fixed data types in the Tableau Data Source tab before building any charts. CSV files have no enforced types, and Tableau auto-detects and sometimes gets it wrong (it did).
 
